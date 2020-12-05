@@ -23,13 +23,13 @@ table.table.align-middle
         td
           = link_to food.name, food_path(id: food.id)
         td
-          = food.prots
+          = number_with_precision(food.prots, precision: 1)
         td
-          = food.fats
+          = number_with_precision(food.fats, precision: 1)
         td
-          = food.carbs
+          = number_with_precision(food.carbs, precision: 1)
         td
-          = food.calories
+          = number_with_precision(food.calories, precision: 1)
         td
           = link_to "Edit", edit_food_path(id: food.id)
           = button_to "Destroy", food_path(id: food.id), method: :delete
