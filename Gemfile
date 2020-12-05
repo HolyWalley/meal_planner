@@ -18,8 +18,14 @@ gem 'turbolinks', '~> 5'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'slim', '~> 4.1'
+
+gem 'simple_form', '~> 5.0', '>= 5.0.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+
+gem 'imgproxy'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

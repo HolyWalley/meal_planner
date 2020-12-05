@@ -1,0 +1,35 @@
+table.table.align-middle
+  thead
+    tr
+      th scope="col"
+        | Image
+      th scope="col"
+        | Name
+      th scope="col"
+        | Proteins
+      th scope="col"
+        | Fats
+      th scope="col"
+        | Carbs
+      th scope="col"
+        | Calories
+      th scope="col"
+        | Controls
+  tbody
+    - @foods.map do |food|
+      tr
+        td
+          = image_tag(food.photo.imgproxy_url(height: 50))
+        td
+          = link_to food.name, food_path(id: food.id)
+        td
+          = food.prots
+        td
+          = food.fats
+        td
+          = food.carbs
+        td
+          = food.calories
+        td
+          = link_to "Edit", edit_food_path(id: food.id)
+          = button_to "Destroy", food_path(id: food.id), method: :delete
