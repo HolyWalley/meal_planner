@@ -22,6 +22,8 @@ gem 'slim', '~> 4.1'
 
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
+gem "view_component", require: "view_component/engine"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

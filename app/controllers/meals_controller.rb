@@ -11,7 +11,6 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @meal.foods_in_meals.new
   end
 
   def edit

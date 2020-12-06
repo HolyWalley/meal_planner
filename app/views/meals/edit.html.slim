@@ -15,12 +15,14 @@
             th scope="col"
               | Name
             th scope="col"
-              | K/P/F/C
+              | Calories
+            th scope="col"
+              | P/F/C
             th scope="col"
               | grams
         tbody
           - @meal.foods_in_meals.each.with_index do |fm, i|
-            tr= render 'food', food: fm.food, idx: i
+            tr= render(FoodInMealComponent.new(food_in_meal: fm, idx: i))
           tr#nextFoodLine
           tr#addNewFoodRow
             td colspan="4"

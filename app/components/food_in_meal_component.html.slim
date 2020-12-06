@@ -1,0 +1,8 @@
+td= image_tag(food.photo.imgproxy_url(height: 50)) unless food.photo.blank?
+td= food.name
+td= calories
+td= nutrients
+td
+  = hidden_field_tag "meal[foods_in_meals_attributes][#{ @idx }][food_in_meal_id]", @food_in_meal.id if @food_in_meal.persisted?
+  = hidden_field_tag "meal[foods_in_meals_attributes][#{ @idx }][food_id]", food.id
+  = number_field_tag "meal[foods_in_meals_attributes][#{ @idx }][food_grams]", @food_in_meal.food_grams
