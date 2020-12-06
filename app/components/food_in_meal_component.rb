@@ -11,22 +11,10 @@ class FoodInMealComponent < ViewComponent::Base
   end
 
   def nutrients
-    "#{ prots } / #{ fats } / #{ carbs }"
+    NutrientsComponent.new(prots: food.prots, fats: food.fats, carbs: food.carbs)
   end
 
   def calories
     number_with_precision(food.calories, precision: 2)
-  end
-
-  def prots
-    number_with_precision(food.prots, precision: 2)
-  end
-
-  def carbs
-    number_with_precision(food.carbs, precision: 2)
-  end
-
-  def fats
-    number_with_precision(food.fats, precision: 2)
   end
 end
