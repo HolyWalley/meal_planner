@@ -23,13 +23,21 @@
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to "Foods", foods_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Meals", meals_path, class: "nav-link" %>
+              </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="createLink" role="button" data-toggle="dropdown" aria-expanded="false">
                   Create
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="createLink">
                   <li><%= link_to "Food", new_food_path, class: "dropdown-item" %></li>
-                  <li><a class="dropdown-item" href="#">Meal</a></li>
+                  <li><%= link_to "Meal", new_meal_path, class: "dropdown-item" %></li>
+                  <li><a class="dropdown-item" href="#">Plan</a></li>
                 </ul>
               </li>
             </ul>

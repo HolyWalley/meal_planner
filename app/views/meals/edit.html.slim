@@ -1,0 +1,36 @@
+.row.justify-content-center.pt-3
+  .col-12.col-sm-12.col-md-6 data-controller="meal"
+    h3 Create Meal
+    = simple_form_for @meal do |f|
+      = f.input :name, wrapper_html: { class: "mb-3" }
+
+      = f.input :calories, readonly: true, wrapper_html: { class: "mb-3" }
+
+      = f.label "Foods:"
+      table.table
+        thead
+          tr
+            th scope="col"
+              | Image
+            th scope="col"
+              | Name
+            th scope="col"
+              | K/P/F/C
+            th scope="col"
+              | grams
+        tbody
+          - @meal.foods_in_meals.each.with_index do |fm, i|
+            tr= render 'food', food: fm.food, idx: i
+          tr#nextFoodLine
+          tr#addNewFoodRow
+            td colspan="4"
+              .form-group
+                label.form-label
+                  | Add food:
+                = select_tag "food", options_from_collection_for_select(Food.all, :id, :name), data: { action: "change->meal#addFood" }, class: "form-control"
+
+      .form-group.mb-3
+        = f.label :photo, class: "form-label"
+        = f.file_field :photo, class: "form-control"
+
+      = f.button :submit, class: "btn-primary"

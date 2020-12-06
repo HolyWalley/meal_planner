@@ -9,6 +9,9 @@ class Food < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many :foods_in_meals
+  has_many :meals, through: :foods_in_meals
+
   validates :name, presence: true
 
   validates :prots, :carbs, :fats, presence: true, numericality: { greater_than_or_equal_to: 0.0 }

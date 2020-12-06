@@ -1,0 +1,6 @@
+td= image_tag(food.photo.imgproxy_url(height: 50)) unless food.photo.blank?
+td= food.name
+td= "#{food.calories} / #{ food.prots } / #{ food.fats } / #{ food.carbs }"
+td
+  = hidden_field_tag "meal[foods_in_meals_attributes][#{ idx }][food_id]", food.id
+  = number_field_tag "meal[foods_in_meals_attributes][#{ idx }][food_grams]"
