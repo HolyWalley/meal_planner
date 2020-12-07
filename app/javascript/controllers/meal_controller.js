@@ -2,16 +2,15 @@ import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
   static targets = [ ]
-  static values = { idx: Number }
+  static values = { }
 
   addFood(event) {
     event.preventDefault()
-    this.stimulate('Meal#add_food', event.target.value, this.idxValue).then(() => {
-      const newLine = document.getElementById('nextFoodLine').cloneNode()
-      document.getElementById('nextFoodLine').removeAttribute('id')
-      const addNewFoodRow = document.getElementById('addNewFoodRow')
-      addNewFoodRow.parentNode.insertBefore(newLine, addNewFoodRow)
-      this.idxValue++
-    });
+    this.stimulate('Meal#add_food', event.target.value)
+  }
+
+  deleteFood(event) {
+    event.preventDefault()
+    this.stimulate('Meal#delete_food', event.target.dataset.id)
   }
 }

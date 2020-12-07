@@ -22,9 +22,8 @@
               | grams
         tbody
           - @meal.foods_in_meals.each.with_index do |fm, i|
-            tr= render(FoodInMealComponent.new(food_in_meal: fm, idx: i))
-          tr#nextFoodLine
-          tr#addNewFoodRow
+            = render(FoodInMealComponent.new(food_in_meal: fm, idx: i))
+          tr
             td colspan="4"
               .form-group
                 label.form-label

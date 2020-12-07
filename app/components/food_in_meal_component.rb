@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class FoodInMealComponent < ViewComponent::Base
-  def initialize(food_in_meal:, idx: 0)
-    @idx = idx
-    @food_in_meal = food_in_meal
+  def initialize(form:)
+    @form = form
+    @food_in_meal = form.object
   end
 
   def food

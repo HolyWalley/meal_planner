@@ -14,7 +14,7 @@ class MealsController < ApplicationController
   end
 
   def edit
-    @meal = Meal.find(params[:id])
+    @meal ||= Meal.find(params[:id])
   end
 
   def create
@@ -33,23 +33,20 @@ class MealsController < ApplicationController
     if @meal.update(meal_params)
       redirect_to :meals
     else
-      render :edit_meal
+      render :edit
     end
   end
 
   def destroy
     @meal = Meal.find(params[:id])
 
-    if @meal.destroy
-      redirect_to :meals
-    else
-      render :meal
-    end
+    @meal.destroy!
+    redirect_to :meals
   end
 
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :photo, foods_in_meals_attributes: %i[food_grams food_id])
+    params.require(:meal).permit(:name, :photo, foods_in_meals_attributes: %i[id food_grams food_id])
   end
 end
