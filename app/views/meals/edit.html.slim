@@ -1,7 +1,7 @@
 .row.justify-content-center.pt-3
   .col-12.col-sm-12.col-md-6 data-controller="meal"
     h3 Create Meal
-    = simple_form_for @meal do |f|
+    = simple_form_for @meal, remote: true do |f|
       = f.input :name, wrapper_html: { class: "mb-3" }
 
       = f.input :calories, readonly: true, wrapper_html: { class: "mb-3" }
