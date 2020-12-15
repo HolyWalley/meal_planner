@@ -10,21 +10,17 @@
       table.table
         thead
           tr
-            th scope="col"
-              | Image
-            th scope="col"
-              | Name
-            th scope="col"
-              | Calories
-            th scope="col"
-              | P/F/C
-            th scope="col"
-              | grams
+            th scope="col" Image
+            th scope="col" Name
+            th scope="col" Calories
+            th scope="col" P/F/C
+            th scope="col" grams
+            th scope="col" Controls
         tbody
-          - @meal.foods_in_meals.each.with_index do |fm, i|
-            = render(FoodInMealComponent.new(food_in_meal: fm, idx: i))
+          = f.simple_fields_for :foods_in_meals do |ffm|
+            = render(FoodInMealComponent.new(form: ffm))
           tr
-            td colspan="4"
+            td colspan="6"
               .form-group
                 label.form-label
                   | Add food:

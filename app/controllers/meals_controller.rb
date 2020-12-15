@@ -10,7 +10,7 @@ class MealsController < ApplicationController
   end
 
   def new
-    @meal = Meal.new
+    @meal ||= Meal.new
   end
 
   def edit
