@@ -15,8 +15,5 @@
           = f.input :calories, readonly: true, wrapper_html: { class: "mb-3" }
           = f.simple_fields_for :foods_in_meals do |ffm|
             = render(FoodInMealComponent.new(form: ffm))
-          tr
     .form-group
-      label.form-label
-        | Add food:
-      = select_tag "food", options_from_collection_for_select(Food.all, :id, :name), data: { action: "change->meal#addFood" }, class: "form-control"
+      = render(FoodSearchComponent.new(results: @results))

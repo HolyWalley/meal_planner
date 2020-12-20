@@ -1,0 +1,37 @@
+div
+  = simple_form_for :search, data: { controller: "food-search" }, remote: true do |f|
+    = f.input :name,
+      required: false,
+      label: false,
+      placeholder: "Type here to start searching",
+      input_html: { data: { "action": "input->food-search#onSearch" } }
+  .mt-3
+    - if @results.blank?
+      h1.display-6 class="text-secondary text-center" Nothing found
+    - else
+      table.table
+        thead
+          tr
+            th scope="col" Image
+            th scope="col" Name
+            th scope="col" Calories
+            th scope="col" P/F/C
+            th scope="col" Grams
+        tbody
+          - @results.each do |result|
+            tr data-controller="food-in-meal" data-food-in-meal-id-value=result.id
+              td= image_tag(result.photo.imgproxy_url(height: 50)) unless result.photo.blank?
+              td= result.name
+              td= result.calories
+              td= '123'
+              td
+                = simple_form_for :food, html: { class: "row row-cols-lg-auto g-3 align-items-center" } do |f|
+                  .col-12
+                    .input-group
+                      = f.input_field :food_grams,
+                        label: false,
+                        class: "form-control form-control-sm",
+                        data: { "food-in-meal-target": "gramsInput" },
+                        style: "width: 100px;"
+                  .col-12
+                    = f.submit "Add", class: "btn btn-sm btn-success", data: { action: "click->food-in-meal#onFoodAdd" }

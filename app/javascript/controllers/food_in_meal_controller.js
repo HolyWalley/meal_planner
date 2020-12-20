@@ -2,7 +2,7 @@ import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
   static values = { id: Number }
-  static targets = ["test"]
+  static targets = [ "gramsInput" ]
 
   changeWeight(weight) {
     this.stimulate('FoodInMeal#change_weight', this.idValue, weight)
@@ -29,5 +29,10 @@ export default class extends ApplicationController {
       this.changeWeight(event.target.value)
       event.target.blur()
     }
+  }
+
+  onFoodAdd(event) {
+    event.preventDefault()
+    this.stimulate('Meal#add_food', this.idValue, this.gramsInputTarget.value)
   }
 }
