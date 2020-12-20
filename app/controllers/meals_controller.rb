@@ -21,7 +21,7 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
 
     if @meal.save
-      redirect_to :edit_meal_foods_path
+      redirect_to edit_meal_foods_path(meal_id: @meal.id)
     else
       render :new
     end

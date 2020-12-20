@@ -8,6 +8,8 @@ class Meal < ApplicationRecord
   has_many :foods_in_meals
   has_many :foods, through: :foods_in_meals
 
+  validates :name, presence: true
+
   accepts_nested_attributes_for :foods_in_meals, allow_destroy: true
 
   def calories
