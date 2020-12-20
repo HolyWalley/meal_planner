@@ -4,28 +4,6 @@
     = simple_form_for @meal do |f|
       = f.input :name, wrapper_html: { class: "mb-3" }
 
-      = f.input :calories, readonly: true, wrapper_html: { class: "mb-3" }
-
-      = f.label "Foods:"
-      table.table
-        thead
-          tr
-            th scope="col" Image
-            th scope="col" Name
-            th scope="col" Calories
-            th scope="col" P/F/C
-            th scope="col" grams
-            th scope="col" Controls
-        tbody
-          = f.simple_fields_for :foods_in_meals do |ffm|
-            = render(FoodInMealComponent.new(form: ffm))
-          tr
-            td colspan="6"
-              .form-group
-                label.form-label
-                  | Add food:
-                = select_tag "food", options_from_collection_for_select(Food.all, :id, :name), data: { action: "change->meal#addFood" }, class: "form-control"
-
       .form-group.mb-3
         = f.label :photo, class: "form-label"
         = f.file_field :photo, class: "form-control"

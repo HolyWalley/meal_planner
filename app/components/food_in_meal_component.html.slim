@@ -1,11 +1,13 @@
-tr
+tr data-controller="food-in-meal" data-food-in-meal-id-value=@form.object.id
   td= image_tag(food.photo.imgproxy_url(height: 50)) unless food.photo.blank?
   td= food.name
   td= calories
   td= render nutrients
-  td
+  td data-food-in-meal-target="test"
     = @form.hidden_field :id
     = @form.hidden_field :food_id
-    = @form.input :food_grams, label: false
+    = @form.input :food_grams,
+                  label: false,
+                  input_html: { data: { action: "blur->food-in-meal#onMealInputBlured keydown->food-in-meal#onMealInputPressedDown" } }
   td
-    = link_to "Destroy", "#", data: { action: "click->meal#deleteFood", id: @form.index }
+    = link_to "Destroy", "#", data: { action: "click->food-in-meal#onDeleteClick" }
